@@ -3,6 +3,6 @@
 '''
 @author:Gavin
 @contact: zqkaiyu@163.com
-@file: 1.py.py
-@time: 2018/11/20 17:31
+@file: str.py
+@time: 2018/11/20 17:37
 '''
