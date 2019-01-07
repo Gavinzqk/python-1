@@ -3,12 +3,6 @@
 '''
 @author:Gavin
 @contact: zqkaiyu@163.com
-@file: 3.py
-@time: 2018/11/20 下午9:33
-
-import django
-django.get_version()
-
-
-
-
+@file: 心图.py
+@time: 2018/12/25 11:19
+'''

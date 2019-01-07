@@ -114,3 +114,27 @@
 # import math
 # n = '{0:<+10.2f} \n{1:>10.2f}'.format(math.pi,- math.pi)
 # print(n)
+
+
+
+# for i in range(1,10):
+#     for j in range(1,i+1):
+#         print("%s*%s=%s" % (j,i,j*i),end=" ")
+#     print()
+
+
+# for x in range(1,10):
+#     for y in range (1,x+1):
+#         print("%s*%s=%s" % (y,x,y*x),end=' ')
+#     print()
+
+
+# num1 = int(input("Please enter a number: "))
+# num2 = int(input("Please enter a number: "))
+# print("%s + %s = %s" % (num1,num2,num1+num2))
+# print("%s - %s = %s" % (num1,num2,num1-num2))
+# print("%s * %s = %s" % (num1,num2,num1*num2))
+# print("%s / %s = %s" % (num1,num2,num1/num2))
+
+a = 92233720368547758090001111111111111111111
+print(type(a))
