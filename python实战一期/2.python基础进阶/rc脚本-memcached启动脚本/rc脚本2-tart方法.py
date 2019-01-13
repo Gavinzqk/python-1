@@ -8,6 +8,16 @@
 
 '''
 
+#! /usr/bin/env python
+# encoding: utf-8
+'''
+@author:Gavin
+@contact: zqkaiyu@163.com
+@file: rc脚本-步骤2-start方法.py
+@time: 2019/1/13 11:14 AM
+
+'''
+
 import sys
 import os
 from subprocess import Popen,PIPE
@@ -47,7 +57,7 @@ class Process(object):
         p = Popen(cmd, stdout=PIPE, shell=True)
         self.pid = p.pid
         self._writePid()
-        print("$s start Sucessful" % self.name)
+        print("%s start Sucessful" % self.name)
 
 
 
@@ -86,7 +96,7 @@ def main():
 
     try:
         cmd = sys.argv[1]
-    except IndexError, e:
+    except 'IndexError,e':
         print('Option error')
         sys.exit()
     if cmd == 'start':
@@ -100,5 +110,5 @@ def main():
     else:
         pm.help()
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     main()
