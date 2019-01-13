@@ -60,8 +60,6 @@ class Process(object):
         print("%s start Sucessful" % self.name)
 
 
-
-
     def stop(self):
         pass
 
@@ -74,12 +72,8 @@ class Process(object):
     def status(self):
         pass
 
-
-
     def help(self):
         pass
-
-
 
 
 def main():
