@@ -8,15 +8,6 @@
 
 '''
 
-#! /usr/bin/env python
-# encoding: utf-8
-'''
-@author:Gavin
-@contact: zqkaiyu@163.com
-@file: rc脚本-步骤2-start方法.py
-@time: 2019/1/13 11:14 AM
-
-'''
 
 import sys
 import os
@@ -44,7 +35,7 @@ class Process(object):
     def _pidFile(self):
         ''' /var/tmp/memcached/memcached.pid '''
         return os.path.join(self.workdir,"%s.pid" % self.name)
-
+    # 进程的pid写入pid文件
     def _writePid(self):
         if self.pid:
             with open(self._pidFile(), 'w') as fd:
@@ -59,9 +50,22 @@ class Process(object):
         self._writePid()
         print("%s start Sucessful" % self.name)
 
+    # stop时先获取memcached的pid
+    def _getPid(self):
+        # python2中：p = Popen(['pidof', 'memcached'], stdout=PIPE).stdout.read().strip()
+        # 获取memcached进程号
+        pid = str(Popen(['pidof', self.name], stdout=PIPE).stdout.read().strip()).split("'")[1]
+        return pid
+
 
     def stop(self):
-        pass
+        # kill pid以及删除memcached.pid文件
+        pid = self._getPid()
+        if pid:
+            os.kill(int(pid),15)
+            if os.path.exists(self._pidFile()):
+                os.remove(self._pidFile())
+            print("%s is stopped" % self.name)
 
 
     def restart(self):
@@ -70,10 +74,16 @@ class Process(object):
 
 
     def status(self):
-        pass
+        pid = self._getPid()
+        if pid:
+            print("%s is already running" % self.name)
+        else:
+            print("%s is not running" % self.name)
 
+
+    # 如果后面跟的不是start、stop等参数；打印以下说明
     def help(self):
-        pass
+        print("Usage: %s {start|stop|restart|status}" % __file__)
 
 
 def main():
