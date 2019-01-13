@@ -42,9 +42,15 @@ class Process(object):
                 fd.write(str(self.pid))
 
     def start(self):
+        # 已经启动memcached时在启动start会影响pid文件里写入当pid值，所以start时先判断是否启动了memcached
+        pid = self._getPid()
+        if pid:
+            print('%s is running...' % self.name)
+            sys.exit()
+
         self._init()
         cmd = self.program + ' ' + self.args
-        # shell 中执行命令需要导入Popen和PIPE模块
+        # shell 中执行命令需要导入Popen和PIPE模块；cmd参数为字符串时使用shell=True
         p = Popen(cmd, stdout=PIPE, shell=True)
         self.pid = p.pid
         self._writePid()
@@ -100,7 +106,7 @@ def main():
 
     try:
         cmd = sys.argv[1]
-    except 'IndexError,e':
+    except:
         print('Option error')
         sys.exit()
     if cmd == 'start':
