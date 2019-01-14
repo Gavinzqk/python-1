@@ -60,7 +60,7 @@ class Process(object):
     def _readConf(self,f):
         with open(f) as fd:
             lines = fd.readlines()
-            return dict([i.strip().replace('"','').spilt('=') for i in lines])
+            return dict([i.strip().replace('"','').split('=') for i in lines])
 
     # 解析参数调用_readConf方法,如果对应的参数key在memcached文件中则把value替换到参数中
     def parseArgs(self):
@@ -72,7 +72,7 @@ class Process(object):
         if 'MAXCONN' in conf:
             self.args["MAXCONN"] = conf["MAXCONN"]
         if 'CACHESIZE' in conf:
-            self.args["CACHSIZE"] = conf["CACHESIZE"]
+            self.args["CACHESIZE"] = conf["CACHESIZE"]
 
         options = ['-u', self.args["USER"],
                    '-p', self.args['PORT'],
