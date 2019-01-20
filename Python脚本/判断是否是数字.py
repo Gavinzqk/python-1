@@ -18,3 +18,4 @@ def isNum(s):
 #     if isNum(str(i)):
 #         print(i)
 
+print('\n'.join(' '.join('{0}*{1}={2}'.format(x,y,x*y) for x in range(1,1+y)) for y in range(1,10)))
