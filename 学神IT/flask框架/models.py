@@ -3,6 +3,8 @@
 '''
 @author:Gavin
 @contact: zqkaiyu@163.com
-@file: 1_demo.py
-@time: 2019/1/30 14:47
+@file: models.py
+@time: 2019/1/30 15:25
 '''
+
+import peewee
